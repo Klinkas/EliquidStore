@@ -44,4 +44,18 @@ public class EliquidsController : ControllerBase
         
         return Ok(eliquidId);
     }
+
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult<Guid>> UpdateEliquids(Guid id, [FromBody] EliquidsRequest request)
+    {
+        var eliquidId = await _eliquidsService.UpdateEliquid(id, request.Name, request.Flavor, request.Capacity);
+
+        return Ok(eliquidId);
+    }
+
+    [HttpDelete]
+    public async Task<ActionResult<Guid>> DeleteEliquids(Guid id)
+    {
+        return Ok(await _eliquidsService.DeleteEliquid(id));
+    }
 }
