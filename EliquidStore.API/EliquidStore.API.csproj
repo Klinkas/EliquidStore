@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EliquidStore.Application\EliquidStore.Application.csproj" />
       <ProjectReference Include="..\EliquidStore.DataAccess\EliquidStore.DataAccess.csproj" />
     </ItemGroup>
 

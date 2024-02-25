@@ -1,4 +1,6 @@
+using EliquidStore.Application.Services;
 using EliquidStore.DataAccess;
+using EliquidStore.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,8 @@ builder.Services.AddDbContext<EliquidStoreDbContext>(
     {
         options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(EliquidStoreDbContext)));
     });
+builder.Services.AddScoped<IEliquidsService, EliquidsService>();
+builder.Services.AddScoped<IEliquidsRepository, EliquidsRepository>();
 
 
 var app = builder.Build();
